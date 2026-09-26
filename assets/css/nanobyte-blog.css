@@ -1,34 +1,599 @@
-title: Nanobyte Security Blog
-url: "https://blog.nanobytesecurity.com"
+/* ==========================================================
+   Nanobyte Security — "Terminal Noir" theme for the BLOG
+   Target: Beautiful Jekyll (blog.nanobytesecurity.com)
+   Save as: assets/css/nanobyte-blog.css
+   Load via `site-css` in _config.yml
+   ========================================================== */
 
-navbar-links:
-  Home: "https://nanobytesecurity.com"
-  Services: "https://nanobytesecurity.com/#services"
-  Book a call: "[CALENDAR LINK]"
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap');
 
-site-css:
-  - "/assets/css/nanobyte-blog.css"
+:root {
+  --nb-bg:        #0A0D0B;
+  --nb-surface:   #0F1411;
+  --nb-border:    #1F2A22;
+  --nb-border-2:  #2A3A30;
+  --nb-text:      #E6EDE8;
+  --nb-text-2:    #A7B8AC;
+  --nb-muted:     #7F9687;
+  --nb-accent:    #4ADE80;
+  --nb-accent-hi: #86EFAC;
+  --nb-on-accent: #06140B;
+  --nb-sans: 'IBM Plex Sans', system-ui, sans-serif;
+  --nb-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
 
-# Colors: match the stylesheet so theme defaults don't fight it
-page-col: "#0A0D0B"
-text-col: "#E6EDE8"
-link-col: "#4ADE80"
-hover-col: "#86EFAC"
-navbar-col: "#0A0D0B"
-navbar-text-col: "#A7B8AC"
-navbar-border-col: "#1F2A22"
-footer-col: "#0A0D0B"
-footer-text-col: "#7F9687"
-footer-link-col: "#7F9687"
-footer-hover-col: "#4ADE80"
+/* ----------------------------------------------------------
+   Base
+   ---------------------------------------------------------- */
 
-# Hide "Powered by Beautiful Jekyll"
-remove-ads: true
-footer-hide-themename: true
+body {
+  background: var(--nb-bg);
+  color: var(--nb-text);
+  font-family: var(--nb-sans);
+}
 
-# Syntax highlighting (the stylesheet colors Rouge output)
-markdown: kramdown
-highlighter: rouge
-kramdown:
-  input: GFM
-  syntax_highlighter: rouge
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--nb-sans);
+  color: var(--nb-text);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+a {
+  color: var(--nb-accent);
+}
+
+a:hover,
+a:focus {
+  color: var(--nb-accent-hi);
+}
+
+hr {
+  border-color: var(--nb-border);
+}
+
+::selection {
+  background: var(--nb-accent);
+  color: var(--nb-on-accent);
+}
+
+/* ----------------------------------------------------------
+   Navbar
+   ---------------------------------------------------------- */
+
+.navbar-custom {
+  background: var(--nb-bg) !important;
+  border-bottom: 1px solid var(--nb-border);
+  font-family: var(--nb-mono);
+}
+
+.navbar-custom .navbar-brand {
+  color: var(--nb-text) !important;
+  font-weight: 700;
+}
+
+.navbar-custom .nav-link {
+  color: var(--nb-text-2) !important;
+  text-transform: lowercase;
+  font-size: 0.85rem;
+}
+
+.navbar-custom .nav-link:hover,
+.navbar-custom .nav-link:focus {
+  color: var(--nb-accent) !important;
+}
+
+.navbar-custom .navbar-toggler {
+  border-color: var(--nb-border-2);
+}
+
+.navbar-custom .dropdown-menu {
+  background: var(--nb-surface);
+  border: 1px solid var(--nb-border);
+}
+
+.navbar-custom .dropdown-item {
+  color: var(--nb-text-2) !important;
+}
+
+.navbar-custom .dropdown-item:hover {
+  background: var(--nb-bg);
+  color: var(--nb-accent) !important;
+}
+
+/* ----------------------------------------------------------
+   Page / post header
+   ---------------------------------------------------------- */
+
+.intro-header {
+  background: var(--nb-bg);
+  margin-top: 0;
+}
+
+.intro-header .page-heading,
+.intro-header .post-heading {
+  text-align: left;
+  padding: 96px 0 48px;
+}
+
+.intro-header .page-heading h1,
+.intro-header .post-heading h1 {
+  font-size: 3rem;
+  line-height: 1.1;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-top: 0;
+}
+
+/* Mono "eyebrow" above every page title */
+.intro-header .page-heading h1::before,
+.intro-header .post-heading h1::before {
+  content: "// nanobyte security blog";
+  display: block;
+  font-family: var(--nb-mono);
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--nb-accent);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.intro-header .page-subheading,
+.intro-header .post-subheading {
+  font-family: var(--nb-sans);
+  font-size: 1.15rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--nb-text-2);
+  max-width: 640px;
+}
+
+.intro-header hr.small {
+  display: none;
+}
+
+.intro-header .post-meta,
+.post-meta {
+  font-family: var(--nb-mono);
+  font-size: 0.8rem;
+  font-style: normal;
+  color: var(--nb-muted);
+}
+
+/* Big header images: darken so white text stays readable */
+.intro-header.big-img {
+  background-color: var(--nb-bg);
+}
+
+.intro-header.big-img .big-img-transition {
+  opacity: 0.35;
+}
+
+/* ----------------------------------------------------------
+   Homepage post list
+   ---------------------------------------------------------- */
+
+.posts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.post-preview {
+  background: var(--nb-surface);
+  border: 1px solid var(--nb-border) !important;
+  border-radius: 10px;
+  padding: 28px 32px !important;
+  margin: 0 !important;
+  transition: border-color 0.15s;
+}
+
+.post-preview:hover {
+  border-color: var(--nb-accent) !important;
+}
+
+.post-preview a {
+  color: var(--nb-text);
+  text-decoration: none;
+}
+
+.post-preview .post-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 0 0 8px;
+  color: var(--nb-text);
+}
+
+.post-preview a:hover .post-title,
+.post-preview a:focus .post-title {
+  color: var(--nb-accent);
+}
+
+.post-preview .post-subtitle {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--nb-text-2);
+  margin: 0 0 12px;
+}
+
+.post-preview .post-meta {
+  margin: 0 0 16px;
+}
+
+.post-preview .post-entry,
+.post-preview .post-entry-container {
+  color: var(--nb-text-2);
+  line-height: 1.65;
+}
+
+.post-preview .post-image img {
+  border-radius: 8px;
+  border: 1px solid var(--nb-border);
+}
+
+.post-preview .post-read-more {
+  font-family: var(--nb-mono);
+  font-size: 0.85rem;
+  color: var(--nb-accent);
+  white-space: nowrap;
+}
+
+/* ----------------------------------------------------------
+   Tags
+   ---------------------------------------------------------- */
+
+.blog-tags {
+  font-family: var(--nb-mono);
+  font-size: 0.75rem;
+  color: var(--nb-muted);
+  margin-top: 16px;
+}
+
+.blog-tags span {
+  margin-right: 4px;
+}
+
+.blog-tags a {
+  display: inline-block;
+  color: var(--nb-text-2) !important;
+  border: 1px solid var(--nb-border-2);
+  border-radius: 4px;
+  padding: 3px 8px;
+  margin: 0 4px 4px 0;
+  text-decoration: none !important;
+}
+
+.blog-tags a:hover {
+  color: var(--nb-accent) !important;
+  border-color: var(--nb-accent);
+}
+
+/* Tags index page */
+.tag-btn {
+  font-family: var(--nb-mono);
+  font-size: 0.8rem;
+  background: transparent !important;
+  color: var(--nb-text-2) !important;
+  border: 1px solid var(--nb-border-2) !important;
+  border-radius: 4px;
+}
+
+.tag-btn:hover {
+  color: var(--nb-accent) !important;
+  border-color: var(--nb-accent) !important;
+}
+
+/* ----------------------------------------------------------
+   Pagination
+   ---------------------------------------------------------- */
+
+.pagination .page-item .page-link,
+.pager li a {
+  background: transparent;
+  color: var(--nb-accent) !important;
+  border: 1px solid var(--nb-accent);
+  border-radius: 6px;
+  font-family: var(--nb-mono);
+  font-size: 0.85rem;
+  text-transform: lowercase;
+  letter-spacing: 0;
+  padding: 10px 16px;
+}
+
+.pagination .page-item .page-link:hover,
+.pager li a:hover {
+  background: var(--nb-accent);
+  color: var(--nb-on-accent) !important;
+}
+
+/* ----------------------------------------------------------
+   Single post body
+   ---------------------------------------------------------- */
+
+.blog-post {
+  font-size: 1.08rem;
+  line-height: 1.75;
+  color: var(--nb-text);
+}
+
+.blog-post p,
+.blog-post li {
+  color: #CDD8D0;
+}
+
+.blog-post h2 {
+  font-size: 1.75rem;
+  margin-top: 48px;
+  padding-top: 16px;
+  border-top: 1px solid var(--nb-border);
+}
+
+.blog-post h3 {
+  font-size: 1.3rem;
+  margin-top: 36px;
+}
+
+.blog-post a {
+  text-decoration: underline;
+  text-decoration-color: rgba(74, 222, 128, 0.4);
+  text-underline-offset: 3px;
+}
+
+.blog-post a:hover {
+  text-decoration-color: var(--nb-accent);
+}
+
+.blog-post img {
+  max-width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--nb-border);
+}
+
+.blog-post ul li::marker {
+  color: var(--nb-accent);
+}
+
+.blog-post blockquote {
+  margin: 28px 0;
+  padding: 16px 24px;
+  background: var(--nb-surface);
+  border: 1px solid var(--nb-border);
+  border-radius: 8px;
+  color: var(--nb-text-2);
+  font-style: normal;
+}
+
+.blog-post blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* Tables (findings, tool output, etc.) */
+.blog-post table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 28px 0;
+  font-size: 0.95rem;
+}
+
+.blog-post th,
+.blog-post td {
+  padding: 10px 14px;
+  border: 1px solid var(--nb-border);
+  text-align: left;
+}
+
+.blog-post th {
+  background: var(--nb-surface);
+  font-family: var(--nb-mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--nb-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Social share buttons + comments area */
+#social-share-section .btn,
+.social-share-section .btn {
+  background: transparent;
+  border: 1px solid var(--nb-border-2);
+  color: var(--nb-text-2);
+}
+
+#social-share-section .btn:hover,
+.social-share-section .btn:hover {
+  border-color: var(--nb-accent);
+  color: var(--nb-accent);
+}
+
+/* ----------------------------------------------------------
+   Code: inline, blocks, and Rouge syntax highlighting
+   ---------------------------------------------------------- */
+
+code,
+kbd,
+pre {
+  font-family: var(--nb-mono);
+}
+
+:not(pre) > code {
+  background: var(--nb-surface);
+  color: var(--nb-accent-hi);
+  border: 1px solid var(--nb-border);
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 0.88em;
+}
+
+pre,
+.highlight,
+div.highlighter-rouge pre,
+figure.highlight pre {
+  background: #070908 !important;
+  color: var(--nb-text);
+  border: 1px solid var(--nb-border);
+  border-radius: 10px;
+  padding: 20px 22px;
+  font-size: 0.85rem;
+  line-height: 1.7;
+  overflow-x: auto;
+}
+
+.highlight pre {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.highlighter-rouge {
+  margin: 28px 0;
+}
+
+.highlight table td {
+  border: 0;
+  padding: 0;
+}
+
+.highlight .lineno,
+.highlight .gutter {
+  color: #3E5246;
+  padding-right: 16px;
+  user-select: none;
+}
+
+/* Rouge tokens */
+.highlight .c,  .highlight .c1, .highlight .cm,
+.highlight .cs, .highlight .cp, .highlight .ch  { color: #5F7A69; font-style: italic; }
+.highlight .k,  .highlight .kd, .highlight .kn,
+.highlight .kp, .highlight .kr, .highlight .kt,
+.highlight .kc                                  { color: #4ADE80; }
+.highlight .s,  .highlight .s1, .highlight .s2,
+.highlight .sb, .highlight .sc, .highlight .sd,
+.highlight .se, .highlight .sh, .highlight .si,
+.highlight .sx, .highlight .sr, .highlight .ss  { color: #FBBF77; }
+.highlight .m,  .highlight .mi, .highlight .mf,
+.highlight .mh, .highlight .mo, .highlight .il  { color: #F59E8B; }
+.highlight .nf, .highlight .fm, .highlight .nx  { color: #7DD3FC; }
+.highlight .nc, .highlight .nn, .highlight .ne  { color: #86EFAC; }
+.highlight .nb, .highlight .bp                  { color: #A5B4FC; }
+.highlight .na, .highlight .nt                  { color: #7DD3FC; }
+.highlight .nv, .highlight .vi, .highlight .vg  { color: #E6EDE8; }
+.highlight .o,  .highlight .ow                  { color: #A7B8AC; }
+.highlight .p                                   { color: #A7B8AC; }
+.highlight .gp                                  { color: #4ADE80; user-select: none; } /* shell prompt */
+.highlight .go                                  { color: #7F9687; }                    /* shell output */
+.highlight .gi                                  { color: #4ADE80; }                    /* diff + */
+.highlight .gd                                  { color: #F87171; }                    /* diff - */
+.highlight .gh, .highlight .gu                  { color: #7DD3FC; font-weight: 600; }
+.highlight .err                                 { color: #F87171; background: transparent; }
+
+/* ----------------------------------------------------------
+   Footer
+   ---------------------------------------------------------- */
+
+footer {
+  background: var(--nb-bg) !important;
+  border-top: 1px solid var(--nb-border);
+  font-family: var(--nb-mono);
+  font-size: 0.8rem;
+  margin-top: 64px;
+}
+
+footer,
+footer a,
+footer .text-muted,
+footer .copyright,
+footer .theme-by {
+  color: var(--nb-muted) !important;
+}
+
+footer a:hover {
+  color: var(--nb-accent) !important;
+}
+
+footer .footer-links .fa-stack .fa-circle {
+  color: var(--nb-surface);
+}
+
+footer .footer-links .fa-stack .fa-inverse {
+  color: var(--nb-text-2);
+}
+
+footer .footer-links a:hover .fa-inverse {
+  color: var(--nb-accent);
+}
+
+/* ----------------------------------------------------------
+   Optional CTA box — paste the HTML snippet from the notes
+   at the end of any post
+   ---------------------------------------------------------- */
+
+.nb-post-cta {
+  margin: 56px 0 16px;
+  padding: 32px;
+  background: var(--nb-surface);
+  border: 1px solid var(--nb-border);
+  border-radius: 12px;
+}
+
+.nb-post-cta .nb-eyebrow {
+  font-family: var(--nb-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--nb-accent);
+  margin-bottom: 8px;
+}
+
+.nb-post-cta h3 {
+  margin: 0 0 8px;
+  border: 0;
+  padding: 0;
+}
+
+.nb-post-cta p {
+  color: var(--nb-text-2) !important;
+  margin: 0 0 20px;
+}
+
+.blog-post .nb-post-cta a.nb-btn,
+.nb-btn {
+  display: inline-block;
+  background: var(--nb-accent);
+  color: var(--nb-on-accent) !important;
+  font-weight: 600;
+  padding: 12px 22px;
+  border-radius: 6px;
+  text-decoration: none !important;
+}
+
+.nb-btn:hover {
+  background: var(--nb-accent-hi);
+}
+
+/* ----------------------------------------------------------
+   Responsive
+   ---------------------------------------------------------- */
+
+@media (max-width: 768px) {
+  .intro-header .page-heading,
+  .intro-header .post-heading {
+    padding: 64px 0 32px;
+  }
+
+  .intro-header .page-heading h1,
+  .intro-header .post-heading h1 {
+    font-size: 2.2rem;
+  }
+
+  .post-preview {
+    padding: 22px !important;
+  }
+
+  .post-preview .post-title {
+    font-size: 1.35rem;
+  }
+}
