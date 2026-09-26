@@ -21,8 +21,6 @@ The lab is split into three separate zones:
 
 Building it meant working through the same plumbing a real network relies on: routing between zones, address assignment across subnets, and the rules that decide which zone is allowed to talk to which. The infrastructure was deployed from code so I can tear the whole thing down and rebuild it identically in minutes.
 
-[Insert network diagram: three subnets with the firewall/router in the middle]
-
 ### The lesson
 
 Here's the part that matters for you. In the lab, when I land on a workstation — say, through a user who opened the wrong attachment — the first thing I do is look around. *What else can I reach from here?*
