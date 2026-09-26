@@ -1,5 +1,5 @@
 /* ==========================================================
-   Nanobyte Security — shared header + footer
+   Nanobyte Security — shared header (.nb-nav) + footer
    Load this SAME file on BOTH sites:
      nanobytesecurity.com       -> assets/css/nanobyte-header.css
      blog.nanobytesecurity.com  -> assets/css/nanobyte-header.css
@@ -22,104 +22,89 @@
 }
 
 /* ----------------------------------------------------------
-   Navbar
+   Header (.nb-nav) — same markup on both sites
    ---------------------------------------------------------- */
 
-.navbar-custom,
-.navbar-custom.top-nav-short,
-.navbar-custom.top-nav-expanded {
-  background: var(--nbh-bg) !important;
-  border-bottom: 1px solid var(--nbh-border) !important;
-  box-shadow: none !important;
-  font-family: var(--nbh-mono);
-  padding-top: 14px;
-  padding-bottom: 14px;
-}
-
-/* Brand: same size and weight whether the page is scrolled or not */
-.navbar-custom .navbar-brand,
-.navbar-custom.top-nav-short .navbar-brand,
-.navbar-custom.top-nav-expanded .navbar-brand {
-  color: var(--nbh-text) !important;
-  font-family: var(--nbh-mono);
-  font-size: 1rem !important;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  text-transform: lowercase;
+/* Neutralize Bootstrap's .navbar class (kept only so the theme's script doesn't error) */
+.nb-nav.navbar {
+  display: block;
+  position: static;
   padding: 0;
+  margin: 0;
 }
 
-.navbar-custom .navbar-brand::after {
-  content: "_";
+.nb-nav {
+  background: var(--nbh-bg);
+  border-bottom: 1px solid var(--nbh-border);
+}
+
+.nb-nav-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  font-family: var(--nbh-mono);
+}
+
+.nb-nav .nb-brand {
+  color: var(--nbh-text);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.nb-nav .nb-brand span {
   color: var(--nbh-accent);
 }
 
-.navbar-custom .navbar-brand:hover {
-  color: var(--nbh-accent) !important;
+.nb-nav .nb-brand:hover {
+  color: var(--nbh-text);
 }
 
-/* Hide any logo/avatar image so both sites show the same text brand */
-.navbar-custom .navbar-brand img,
-.navbar-custom .avatar-container {
-  display: none !important;
-}
-
-.navbar-custom .navbar-nav {
+.nb-nav-links {
+  display: flex;
+  gap: 28px;
   align-items: center;
-  gap: 8px;
+  font-size: 0.85rem;
 }
 
-.navbar-custom .nav-link,
-.navbar-custom.top-nav-short .nav-link,
-.navbar-custom.top-nav-expanded .nav-link {
-  color: var(--nbh-text-2) !important;
-  font-family: var(--nbh-mono);
-  font-size: 0.85rem !important;
-  font-weight: 400;
-  letter-spacing: 0;
-  text-transform: lowercase;
-  padding: 8px 12px !important;
+.nb-nav-links a {
+  color: var(--nbh-text-2);
+  text-decoration: none;
 }
 
-.navbar-custom .nav-link:hover,
-.navbar-custom .nav-link:focus {
-  color: var(--nbh-accent) !important;
+.nb-nav-links a:hover,
+.nb-nav-links a:focus {
+  color: var(--nbh-accent);
 }
 
-/* Last nav item ("Book a call") becomes the outlined button */
-.navbar-custom .navbar-nav .nav-item:last-child .nav-link {
-  color: var(--nbh-accent) !important;
+.nb-nav-links .nb-nav-cta {
+  color: var(--nbh-accent);
   border: 1px solid var(--nbh-accent);
+  padding: 9px 14px;
   border-radius: 6px;
-  margin-left: 8px;
 }
 
-.navbar-custom .navbar-nav .nav-item:last-child .nav-link:hover {
+.nb-nav-links .nb-nav-cta:hover,
+.nb-nav-links .nb-nav-cta:focus {
   background: var(--nbh-accent);
-  color: var(--nbh-on-accent) !important;
+  color: var(--nbh-on-accent);
 }
 
-/* Mobile menu */
-.navbar-custom .navbar-toggler {
-  border-color: var(--nbh-border);
+/* Beautiful Jekyll pads the page for its fixed navbar; the new header isn't fixed */
+body {
+  padding-top: 0 !important;
 }
 
-.navbar-custom .navbar-toggler-icon {
-  filter: invert(1);
+.intro-header {
+  margin-top: 0 !important;
 }
 
-@media (max-width: 1199px) {
-  .navbar-custom .navbar-collapse {
-    background: var(--nbh-bg);
-    padding: 12px 0;
-  }
-
-  .navbar-custom .navbar-nav {
-    align-items: flex-start;
-  }
-
-  .navbar-custom .navbar-nav .nav-item:last-child .nav-link {
-    margin: 8px 0 0 12px;
+@media (max-width: 600px) {
+  .nb-nav-links a:not(.nb-nav-cta) {
+    display: none;
   }
 }
 
