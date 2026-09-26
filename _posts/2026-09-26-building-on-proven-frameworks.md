@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Building Tools on Proven Frameworks: Why Reinventing the Wheel is a Trap
+title: Building Tools on Proven Frameworks - Why Reinventing the Wheel is a Trap
 tags: [tool-building, frameworks, architecture, efficiency]
 author: Alex Dalzell
 ---
