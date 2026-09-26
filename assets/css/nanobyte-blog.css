@@ -1,0 +1,34 @@
+title: Nanobyte Security Blog
+url: "https://blog.nanobytesecurity.com"
+
+navbar-links:
+  Home: "https://nanobytesecurity.com"
+  Services: "https://nanobytesecurity.com/#services"
+  Book a call: "[CALENDAR LINK]"
+
+site-css:
+  - "/assets/css/nanobyte-blog.css"
+
+# Colors: match the stylesheet so theme defaults don't fight it
+page-col: "#0A0D0B"
+text-col: "#E6EDE8"
+link-col: "#4ADE80"
+hover-col: "#86EFAC"
+navbar-col: "#0A0D0B"
+navbar-text-col: "#A7B8AC"
+navbar-border-col: "#1F2A22"
+footer-col: "#0A0D0B"
+footer-text-col: "#7F9687"
+footer-link-col: "#7F9687"
+footer-hover-col: "#4ADE80"
+
+# Hide "Powered by Beautiful Jekyll"
+remove-ads: true
+footer-hide-themename: true
+
+# Syntax highlighting (the stylesheet colors Rouge output)
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
