@@ -1,3 +1,10 @@
+---
+layout: post
+title: How I'd Break Into Your Business (And the Five Things That Would Stop Me)
+tags: [hardening, attacker mindset, fundamentals]
+author: Alex Dalzell
+---
+
 I break into computer systems for a living — legally, with permission, so that the results land on a report instead of the news. After enough of this, you notice something: the ways in are boringly consistent. It's rarely a movie-style genius hack. It's almost always a handful of small, fixable weaknesses that nobody got around to closing.
 
 So let me walk you through how I'd approach your business, and — more importantly — the specific thing that stops each step. No exploit code here. Just the attacker's map, and where the roadblocks go.
