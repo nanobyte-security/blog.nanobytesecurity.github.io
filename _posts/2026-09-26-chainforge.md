@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Why I Built My Own Exploit-Development Tool Instead of Using Someone Else's
-tags: tooling, exploit development, ChainForge, craft
+tags: [tooling] [exploit development] [ChainForge] [craft]
 author: Alex Dalzell
 ---
 
