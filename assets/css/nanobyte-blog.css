@@ -816,7 +816,21 @@ figure.highlight pre {
   text-align: left;
 }
 
+/* Centered blocks: selectors are more specific than the left-align guard above */
 .blog-post .caption,
-.nb-blog-cta p {
+.blog-post .nb-post-cta,
+.blog-post .nb-post-cta h3,
+.blog-post .nb-post-cta p,
+.nb-post-cta,
+.nb-post-cta p,
+.nb-blog .nb-blog-cta,
+.nb-blog .nb-blog-cta p {
   text-align: center;
+}
+
+.blog-post .nb-post-cta p,
+.nb-blog .nb-blog-cta p {
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
 }
