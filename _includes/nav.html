@@ -1,62 +1,124 @@
-<nav class="navbar navbar-expand-xl navbar-light fixed-top navbar-custom {% if page.nav-short %}top-nav-short-permanent{% else %}top-nav-regular{% endif %}">
+<!--
+  Nanobyte Security header — identical to nanobytesecurity.com
+  Save as: _includes/nav.html (replaces Beautiful Jekyll's navbar)
 
-  {%- if site.title-img -%}
-    <a class="navbar-brand navbar-brand-logo" href="{{ '/' | absolute_url }}"><img alt="{{ site.title }} Logo" src="{{ site.title-img | relative_url}}"/></a>
-  {%- elsif site.title -%}
-    <a class="navbar-brand" href="{{ '/' | absolute_url }}">{{ site.title }}</a>
-  {%- endif -%}
+  Self-contained: styles are scoped to #nb-nav with high specificity so
+  Bootstrap / Beautiful Jekyll CSS cannot override them. No other CSS file
+  is needed for the header.
+-->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;display=swap">
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<style>
+  /* Beautiful Jekyll offsets the page for its fixed navbar; this header isn't fixed */
+  body {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
 
-  <div class="collapse navbar-collapse" id="main-navbar">
-    <ul class="navbar-nav ml-auto">
-      {%- for link in site.navbar-links -%}
-        {%- if link[1].first %}
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ link[0] }}</a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-              {%- for childlink in link[1] -%}
-                {%- for linkparts in childlink %}
-                  <a class="dropdown-item" href="{{ linkparts[1] | relative_url }}">{{ linkparts[0] }}</a>
-                {%- endfor -%}
-              {%- endfor %}
-            </div>
-          </li>
-        {% else %}
-          <li class="nav-item">
-            <a class="nav-link" href="{{ link[1] | relative_url }}">{{ link[0] }}</a>
-          </li>
-        {%- endif -%}
-      {%- endfor -%}
-      {% if site.post_search %}
-        <li class="nav-item">
-          <a class="nav-link" id="nav-search-link" href="#" title="Search">
-            <span id="nav-search-icon" class="fa fa-search"></span>
-            <span id="nav-search-text">Search</span>
-          </a>
-        </li>
-      {%- endif -%}
-      <li class="nav-item">
-       <a class="nav-link" id="nav-home-link" href="https://nanobytesecurity.com/" title="Nanobyte Security">
-         <span id="nav-home-text">Nanobyte Security</span>
-       </a>
-     </li>
-     <li class="nav-item">
-        <a class="nav-link" id="nav-contact-link" href="https://nanobytesecurity.com/contact" title="Contact">
-          <span id="nav-contact-text">Contact</span>
-        </a>
-      </li>
-    </ul>
+  .intro-header {
+    margin-top: 0 !important;
+  }
+
+  #nb-nav,
+  #nb-nav * {
+    box-sizing: border-box;
+  }
+
+  #nb-nav {
+    display: block;
+    position: static;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: #0A0D0B;
+    border-bottom: 1px solid #1F2A22;
+    line-height: 1.5;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  #nb-nav .nb-nav-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  #nb-nav a {
+    text-decoration: none;
+    letter-spacing: normal;
+    text-transform: none;
+    transition: color 0.15s, background 0.15s;
+  }
+
+  #nb-nav .nb-brand {
+    color: #E6EDE8;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  #nb-nav .nb-brand:hover,
+  #nb-nav .nb-brand:focus {
+    color: #E6EDE8;
+  }
+
+  #nb-nav .nb-brand span {
+    color: #4ADE80;
+  }
+
+  #nb-nav .nb-nav-links {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    font-size: 0.85rem;
+  }
+
+  #nb-nav .nb-nav-links a {
+    color: #A7B8AC;
+    font-weight: 400;
+  }
+
+  #nb-nav .nb-nav-links a:hover,
+  #nb-nav .nb-nav-links a:focus {
+    color: #4ADE80;
+  }
+
+  #nb-nav .nb-nav-links .nb-nav-cta {
+    color: #4ADE80;
+    border: 1px solid #4ADE80;
+    padding: 9px 14px;
+    border-radius: 6px;
+  }
+
+  #nb-nav .nb-nav-links .nb-nav-cta:hover,
+  #nb-nav .nb-nav-links .nb-nav-cta:focus {
+    background: #4ADE80;
+    color: #06140B;
+  }
+
+  @media (max-width: 600px) {
+    #nb-nav .nb-nav-links a:not(.nb-nav-cta) {
+      display: none;
+    }
+  }
+</style>
+
+<header id="nb-nav" class="nb-nav">
+  <div class="nb-nav-inner">
+    <a class="nb-brand" href="https://nanobytesecurity.com/">nanobyte<span>_</span>security</a>
+    <nav class="nb-nav-links">
+      <a href="https://nanobytesecurity.com/#services">services</a>
+      <a href="https://nanobytesecurity.com/#process">process</a>
+      <a href="https://blog.nanobytesecurity.com/">blog</a>
+      <a class="nb-nav-cta" href="https://calendly.com/alex-nanobytesecurity/30min">book a call</a>
+    </nav>
   </div>
+</header>
 
-  {% if site.navbar-extra %}
-    {% for file in site.navbar-extra %}
-      {% include {{ file }} %}
-    {% endfor %}
-  {% endif %}
-
-</nav>
-
-{% include search.html %}
+<!-- Hidden stand-in so Beautiful Jekyll's script finds a ".navbar" and doesn't throw errors -->
+<div class="navbar" style="display: none;" aria-hidden="true"></div>
