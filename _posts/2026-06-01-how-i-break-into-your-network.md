@@ -46,3 +46,5 @@ Notice what's *not* on this list: exotic tools, zero-day exploits, nation-state 
 That's the real message here. The gap between "easy target" and "not worth the effort" is smaller than most owners think — but only if you close it before someone comes knocking.
 
 **Takeaway:** Attackers follow a predictable path. Patch your exposed systems, turn on MFA, train your people, segment your network, and keep working backups. Do those five things and you've defeated the overwhelming majority of real-world attacks.
+
+If you want that kind of rigor pointed at your environment, let's talk. [Get in touch](mailto:alex@nanobytesecurity.com), or [book a call](https://calendly.com/alex-nanobytesecurity/30min).]
