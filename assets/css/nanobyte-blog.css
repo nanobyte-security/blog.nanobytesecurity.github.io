@@ -57,49 +57,7 @@ hr {
   color: var(--nb-on-accent);
 }
 
-/* ----------------------------------------------------------
-   Navbar
-   ---------------------------------------------------------- */
-
-.navbar-custom {
-  background: var(--nb-bg) !important;
-  border-bottom: 1px solid var(--nb-border);
-  font-family: var(--nb-mono);
-}
-
-.navbar-custom .navbar-brand {
-  color: var(--nb-text) !important;
-  font-weight: 700;
-}
-
-.navbar-custom .nav-link {
-  color: var(--nb-text-2) !important;
-  text-transform: lowercase;
-  font-size: 0.85rem;
-}
-
-.navbar-custom .nav-link:hover,
-.navbar-custom .nav-link:focus {
-  color: var(--nb-accent) !important;
-}
-
-.navbar-custom .navbar-toggler {
-  border-color: var(--nb-border-2);
-}
-
-.navbar-custom .dropdown-menu {
-  background: var(--nb-surface);
-  border: 1px solid var(--nb-border);
-}
-
-.navbar-custom .dropdown-item {
-  color: var(--nb-text-2) !important;
-}
-
-.navbar-custom .dropdown-item:hover {
-  background: var(--nb-bg);
-  color: var(--nb-accent) !important;
-}
+/* Navbar and footer styles live in nanobyte-header.css (shared with the main site). */
 
 /* ----------------------------------------------------------
    Page / post header
@@ -489,42 +447,6 @@ figure.highlight pre {
 .highlight .gd                                  { color: #F87171; }                    /* diff - */
 .highlight .gh, .highlight .gu                  { color: #7DD3FC; font-weight: 600; }
 .highlight .err                                 { color: #F87171; background: transparent; }
-
-/* ----------------------------------------------------------
-   Footer
-   ---------------------------------------------------------- */
-
-footer {
-  background: var(--nb-bg) !important;
-  border-top: 1px solid var(--nb-border);
-  font-family: var(--nb-mono);
-  font-size: 0.8rem;
-  margin-top: 64px;
-}
-
-footer,
-footer a,
-footer .text-muted,
-footer .copyright,
-footer .theme-by {
-  color: var(--nb-muted) !important;
-}
-
-footer a:hover {
-  color: var(--nb-accent) !important;
-}
-
-footer .footer-links .fa-stack .fa-circle {
-  color: var(--nb-surface);
-}
-
-footer .footer-links .fa-stack .fa-inverse {
-  color: var(--nb-text-2);
-}
-
-footer .footer-links a:hover .fa-inverse {
-  color: var(--nb-accent);
-}
 
 /* ----------------------------------------------------------
    Optional CTA box — paste the HTML snippet from the notes
