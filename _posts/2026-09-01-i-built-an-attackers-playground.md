@@ -41,6 +41,4 @@ If that sounds like more than your current setup can handle, that's a useful thi
 
 **Takeaway:** A flat network turns a single mistake into a total loss. Separating your network into zones is cheap, often just a configuration change, and it's the difference between "we had an incident" and "we had a disaster."
 
-Want to know how far an attacker could get on your network today? That's exactly what a penetration test answers. [Get in touch](mailto:alex@nanobytesecurity.com), or [book a call](https://calendly.com/alex-nanobytesecurity/30min).]
-
 **Takeaway:** Attackers follow a predictable path. Patch your exposed systems, turn on MFA, train your people, segment your network, and keep working backups. Do those five things and you've defeated the overwhelming majority of real-world attacks.
