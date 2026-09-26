@@ -1,6 +1,70 @@
-<div class="nb-post-cta">
-  <div class="nb-eyebrow">// Nanobyte Security</div>
-  <center><h3>Want to know how an attacker would get into your business?</h3></center>
-  <center><p>Book a free 30-minute scoping call. No sales pitch, just a straight conversation about your environment.</p></center>
-  <center><a class="nb-btn" href="https://calendly.com/alex-nanobytesecurity/30min">Book a free scoping call</a></center>
+<!--
+  Nanobyte Security — end-of-post call to action (self-contained)
+  Save as: _includes/post-cta.html in the blog repo.
+
+  Use it at the bottom of a post with:   {% include post-cta.html %}
+  or add that line after {{ content }} in _layouts/post.html to show it on every post.
+
+  Styles are scoped to #nb-post-cta so no other CSS file can change it.
+-->
+<style>
+  #nb-post-cta {
+    margin: 56px 0 16px;
+    padding: 40px 32px;
+    background: #0F1411;
+    border: 1px solid #1F2A22;
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  #nb-post-cta .nb-cta-eyebrow {
+    margin: 0 0 10px;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #4ADE80;
+    text-align: center;
+  }
+
+  #nb-post-cta h3 {
+    margin: 0 0 10px;
+    padding: 0;
+    border: 0;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #E6EDE8;
+    text-align: center;
+  }
+
+  #nb-post-cta p {
+    max-width: 520px;
+    margin: 0 auto 24px;
+    color: #A7B8AC;
+    line-height: 1.65;
+    text-align: center;
+  }
+
+  #nb-post-cta a.nb-cta-btn {
+    display: inline-block;
+    background: #4ADE80;
+    color: #06140B;
+    font-weight: 600;
+    padding: 12px 22px;
+    border-radius: 6px;
+    text-decoration: none;
+  }
+
+  #nb-post-cta a.nb-cta-btn:hover,
+  #nb-post-cta a.nb-cta-btn:focus {
+    background: #86EFAC;
+    color: #06140B;
+  }
+</style>
+
+<div id="nb-post-cta">
+  <div class="nb-cta-eyebrow">// Nanobyte Security</div>
+  <h3>Want to know how an attacker would get into your business?</h3>
+  <p>Book a free 30-minute scoping call. No sales pitch, just a straight conversation about your environment.</p>
+  <a class="nb-cta-btn" href="https://calendly.com/alex-nanobytesecurity/30min">Book a free scoping call</a>
 </div>
