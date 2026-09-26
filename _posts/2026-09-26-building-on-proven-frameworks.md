@@ -11,7 +11,7 @@ I learned this building a Windows offensive-security toolkit. The naive approach
 
 That decision changed everything about the project's viability.
 
-## The Real Cost of Protocol Implementation
+### The Real Cost of Protocol Implementation ###
 
 Before you implement a Windows protocol, understand what you're signing up for:
 
@@ -27,7 +27,7 @@ Every one of these is a permanent tax on your project. A new Windows version com
 
 That's the trap.
 
-## The Framework Bet
+### The Framework Bet ###
 
 The alternative is finding a maintained framework that already solved this—and then betting on it. This requires three things:
 
@@ -37,7 +37,7 @@ The alternative is finding a maintained framework that already solved this—and
 
 **Third, you have to be willing to vendor it and never fork it.** This is the discipline part. You don't edit the framework's code. You don't "just fix this one thing" and diverge. You consume it as a dependency. If it lacks something you need, you build it in your tool, on top of the framework. This keeps your upgrade path clean. When you pull a new version of the framework, nothing in your codebase breaks because you haven't modified it.
 
-## What This Buys You
+### What This Buys You ###
 
 By standing on a proven framework, you get:
 
@@ -51,13 +51,13 @@ By standing on a proven framework, you get:
 
 **Focus on differentiation.** Your job isn't to out-implement the protocol maintainers. It's to build something they can't: an operator-focused experience. Better logging. Cleaner output. Faster multi-host sweeps. Integrated workflow. That's where you win.
 
-## The Cost
+### The Cost ###
 
 Standing on a framework isn't free. You're dependent on its pace. If the maintainers deprioritize your use case, you're stuck. If a new protocol becomes critical and the framework doesn't support it, you have to wait or fork. If the framework takes a direction you disagree with, you're either along for the ride or you're maintaining a fork (which defeats the purpose).
 
 These are real constraints. But they're almost always better than the alternative: maintaining your own protocol library while also building a tool.
 
-## The Bet
+### The Bet ###
 
 When building a tool on frameworks, you're betting that:
 
@@ -67,7 +67,7 @@ When building a tool on frameworks, you're betting that:
 
 That bet usually pays off. You build in a fraction of the time. The code is cleaner because the framework handles the cross-cutting concerns. Updates are straightforward. And when new capability emerges, you add it by wrapping the framework's capabilities, not by reimplementing from scratch.
 
-## The Principle
+### The Principle ###
 
 The broader lesson: **don't solve problems that are already solved.** Find the framework, the library, the platform that solves the hard part of your problem. Then build your differentiation on top of it.
 
