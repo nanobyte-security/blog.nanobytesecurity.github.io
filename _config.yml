@@ -1,19 +1,26 @@
-title: Nanobyte Security Blog
 url: "https://blog.nanobytesecurity.com"
-
-navbar-links:
-  Home: "https://nanobytesecurity.com"
-  Services: "https://nanobytesecurity.com/#services"
-  Book a call: "https://calendly.com/alex-nanobytesecurity/30min"
-
 site-css:
+  - "/assets/css/nanobyte-header.css"
   - "/assets/css/nanobyte-blog.css"
 
-# Colors: match the stylesheet so theme defaults don't fight it
-page-col: "#0A0D0B"
-text-col: "#E6EDE8"
-link-col: "#4ADE80"
-hover-col: "#86EFAC"
+  # ---------- SHARED HEADER / FOOTER (keep identical on both sites) ----------
+title: Nanobyte Security
+author: Alex Dalzell
+url-pretty: "NanobyteSecurity.com"
+
+navbar-links:
+  Services: "https://nanobytesecurity.com/#services"
+  Blog: "https://blog.nanobytesecurity.com/"
+  Contact: "https://nanobytesecurity.com/contact"
+  Book a call: "https://calendly.com/alex-nanobytesecurity/30min"
+
+social-network-links:
+  email: "alex@nanobytesecurity.com"
+  linkedin: alexander-dalzell
+
+remove-ads: true
+footer-hide-themename: true
+
 navbar-col: "#0A0D0B"
 navbar-text-col: "#A7B8AC"
 navbar-border-col: "#1F2A22"
@@ -21,14 +28,4 @@ footer-col: "#0A0D0B"
 footer-text-col: "#7F9687"
 footer-link-col: "#7F9687"
 footer-hover-col: "#4ADE80"
-
-# Hide "Powered by Beautiful Jekyll"
-remove-ads: true
-footer-hide-themename: true
-
-# Syntax highlighting (the stylesheet colors Rouge output)
-markdown: kramdown
-highlighter: rouge
-kramdown:
-  input: GFM
-  syntax_highlighter: rouge
+# ---------------------------------------------------------------------------
