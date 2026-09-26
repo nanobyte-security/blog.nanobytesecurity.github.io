@@ -519,3 +519,304 @@ figure.highlight pre {
     font-size: 1.35rem;
   }
 }
+
+/* ==========================================================
+   Blog home layout (_layouts/home.html)
+   ========================================================== */
+
+.nb-blog {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.nb-eyebrow {
+  font-family: var(--nb-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  color: var(--nb-accent);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+/* Hero */
+.nb-blog-hero {
+  padding: 96px 0 56px;
+  max-width: 760px;
+}
+
+.nb-blog-hero h1 {
+  font-size: 3.2rem;
+  line-height: 1.08;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 0 0 20px;
+}
+
+.nb-blog-hero p {
+  font-size: 1.15rem;
+  line-height: 1.65;
+  color: var(--nb-text-2);
+  margin: 0 0 24px;
+}
+
+.nb-hero-links {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  font-family: var(--nb-mono);
+  font-size: 0.85rem;
+}
+
+.nb-hero-links a {
+  text-decoration: none;
+}
+
+.nb-blog-intro {
+  color: var(--nb-text-2);
+  line-height: 1.65;
+  max-width: 760px;
+  margin-bottom: 32px;
+}
+
+/* Post list */
+.nb-posts {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.nb-post {
+  background: var(--nb-surface);
+  border: 1px solid var(--nb-border);
+  border-radius: 10px;
+  padding: 28px 32px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  transition: border-color 0.15s;
+}
+
+.nb-post:hover,
+.nb-post:focus-within {
+  border-color: var(--nb-accent);
+}
+
+.nb-post.has-image {
+  grid-template-columns: minmax(0, 1fr) 200px;
+  column-gap: 32px;
+  align-items: start;
+}
+
+.nb-post-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.nb-post-meta {
+  font-family: var(--nb-mono);
+  font-size: 0.78rem;
+  color: var(--nb-muted);
+}
+
+.nb-post-title {
+  font-size: 1.6rem;
+  line-height: 1.25;
+  font-weight: 600;
+  margin: 0;
+}
+
+.nb-post-title a {
+  color: var(--nb-text);
+  text-decoration: none;
+}
+
+.nb-post-title a:hover,
+.nb-post-title a:focus {
+  color: var(--nb-accent);
+}
+
+.nb-post-subtitle {
+  font-size: 1.05rem;
+  color: var(--nb-text);
+  margin: 0;
+}
+
+.nb-post-excerpt {
+  color: var(--nb-text-2);
+  line-height: 1.65;
+  margin: 0;
+}
+
+.nb-post-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.nb-tags {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-family: var(--nb-mono);
+  font-size: 0.75rem;
+}
+
+.nb-tags a {
+  display: inline-block;
+  color: var(--nb-text-2);
+  border: 1px solid var(--nb-border-2);
+  border-radius: 4px;
+  padding: 3px 8px;
+  text-decoration: none;
+}
+
+.nb-tags a:hover,
+.nb-tags a:focus {
+  color: var(--nb-accent);
+  border-color: var(--nb-accent);
+}
+
+.nb-read-more {
+  font-family: var(--nb-mono);
+  font-size: 0.85rem;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.nb-post-image img {
+  display: block;
+  width: 200px;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--nb-border);
+}
+
+/* Empty state */
+.nb-empty {
+  background: var(--nb-surface);
+  border: 1px dashed var(--nb-border-2);
+  border-radius: 10px;
+  padding: 40px 32px;
+  font-family: var(--nb-mono);
+  font-size: 0.9rem;
+  color: var(--nb-muted);
+}
+
+.nb-empty .p {
+  color: var(--nb-accent);
+}
+
+/* Pagination */
+.nb-pager {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 64px;
+  font-family: var(--nb-mono);
+  font-size: 0.85rem;
+  color: var(--nb-muted);
+}
+
+.nb-pager a {
+  border: 1px solid var(--nb-accent);
+  border-radius: 6px;
+  padding: 10px 16px;
+  text-decoration: none;
+}
+
+.nb-pager a:hover,
+.nb-pager a:focus {
+  background: var(--nb-accent);
+  color: var(--nb-on-accent);
+}
+
+.nb-pager .nb-spacer {
+  width: 1px;
+}
+
+/* CTA */
+.nb-blog-cta {
+  margin: 0 0 32px;
+  padding: 48px 32px;
+  background: var(--nb-surface);
+  border: 1px solid var(--nb-border);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.nb-blog-cta h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0 0 12px;
+}
+
+.nb-blog-cta p {
+  color: var(--nb-text-2);
+  line-height: 1.65;
+  max-width: 520px;
+  margin: 0 auto 24px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nb-blog-hero {
+    padding: 64px 0 40px;
+  }
+
+  .nb-blog-hero h1 {
+    font-size: 2.4rem;
+  }
+
+  .nb-post {
+    padding: 22px;
+  }
+
+  .nb-post.has-image {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .nb-post-image {
+    order: -1;
+    margin-bottom: 16px;
+  }
+
+  .nb-post-image img {
+    width: 100%;
+  }
+
+  .nb-post-title {
+    font-size: 1.35rem;
+  }
+}
+
+/* ----------------------------------------------------------
+   Alignment guard: beautifuljekyll.css in this repo has a
+   global `p { text-align: center; }`. Force body copy left.
+   ---------------------------------------------------------- */
+.blog-post p,
+.blog-post li,
+.blog-post blockquote,
+.blog-post table,
+.nb-blog p,
+.nb-post-excerpt,
+.nb-blog-hero p,
+.intro-header .post-heading,
+.intro-header .post-subheading {
+  text-align: left;
+}
+
+.blog-post .caption,
+.nb-blog-cta p {
+  text-align: center;
+}
