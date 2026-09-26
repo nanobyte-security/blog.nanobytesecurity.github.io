@@ -5,14 +5,12 @@ site-css:
 
   # ---------- SHARED HEADER / FOOTER (keep identical on both sites) ----------
 title: Nanobyte Security
-author: Alex Dalzell
+url: "https://blog.nanobytesecurity.com"
 url-pretty: "NanobyteSecurity.com"
 
-navbar-links:
-  Services: "https://nanobytesecurity.com/#services"
-  Blog: "https://blog.nanobytesecurity.com/"
-  Contact: "https://nanobytesecurity.com/contact"
-  Book a call: "https://calendly.com/alex-nanobytesecurity/30min"
+site-css:
+  - "/assets/css/nanobyte-header.css"
+  - "/assets/css/nanobyte-blog.css"
 
 social-network-links:
   email: "alex@nanobytesecurity.com"
@@ -20,12 +18,4 @@ social-network-links:
 
 remove-ads: true
 footer-hide-themename: true
-
-navbar-col: "#0A0D0B"
-navbar-text-col: "#A7B8AC"
-navbar-border-col: "#1F2A22"
-footer-col: "#0A0D0B"
-footer-text-col: "#7F9687"
-footer-link-col: "#7F9687"
-footer-hover-col: "#4ADE80"
 # ---------------------------------------------------------------------------
