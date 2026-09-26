@@ -1,0 +1,166 @@
+/* ==========================================================
+   Nanobyte Security — shared header + footer
+   Load this SAME file on BOTH sites:
+     nanobytesecurity.com       -> assets/css/nanobyte-header.css
+     blog.nanobytesecurity.com  -> assets/css/nanobyte-header.css
+   Any change here must be copied to both repos.
+   ========================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root {
+  --nbh-bg:        #0A0D0B;
+  --nbh-surface:   #0F1411;
+  --nbh-border:    #1F2A22;
+  --nbh-text:      #E6EDE8;
+  --nbh-text-2:    #A7B8AC;
+  --nbh-muted:     #7F9687;
+  --nbh-accent:    #4ADE80;
+  --nbh-accent-hi: #86EFAC;
+  --nbh-on-accent: #06140B;
+  --nbh-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+/* ----------------------------------------------------------
+   Navbar
+   ---------------------------------------------------------- */
+
+.navbar-custom,
+.navbar-custom.top-nav-short,
+.navbar-custom.top-nav-expanded {
+  background: var(--nbh-bg) !important;
+  border-bottom: 1px solid var(--nbh-border) !important;
+  box-shadow: none !important;
+  font-family: var(--nbh-mono);
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+/* Brand: same size and weight whether the page is scrolled or not */
+.navbar-custom .navbar-brand,
+.navbar-custom.top-nav-short .navbar-brand,
+.navbar-custom.top-nav-expanded .navbar-brand {
+  color: var(--nbh-text) !important;
+  font-family: var(--nbh-mono);
+  font-size: 1rem !important;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: lowercase;
+  padding: 0;
+}
+
+.navbar-custom .navbar-brand::after {
+  content: "_";
+  color: var(--nbh-accent);
+}
+
+.navbar-custom .navbar-brand:hover {
+  color: var(--nbh-accent) !important;
+}
+
+/* Hide any logo/avatar image so both sites show the same text brand */
+.navbar-custom .navbar-brand img,
+.navbar-custom .avatar-container {
+  display: none !important;
+}
+
+.navbar-custom .navbar-nav {
+  align-items: center;
+  gap: 8px;
+}
+
+.navbar-custom .nav-link,
+.navbar-custom.top-nav-short .nav-link,
+.navbar-custom.top-nav-expanded .nav-link {
+  color: var(--nbh-text-2) !important;
+  font-family: var(--nbh-mono);
+  font-size: 0.85rem !important;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: lowercase;
+  padding: 8px 12px !important;
+}
+
+.navbar-custom .nav-link:hover,
+.navbar-custom .nav-link:focus {
+  color: var(--nbh-accent) !important;
+}
+
+/* Last nav item ("Book a call") becomes the outlined button */
+.navbar-custom .navbar-nav .nav-item:last-child .nav-link {
+  color: var(--nbh-accent) !important;
+  border: 1px solid var(--nbh-accent);
+  border-radius: 6px;
+  margin-left: 8px;
+}
+
+.navbar-custom .navbar-nav .nav-item:last-child .nav-link:hover {
+  background: var(--nbh-accent);
+  color: var(--nbh-on-accent) !important;
+}
+
+/* Mobile menu */
+.navbar-custom .navbar-toggler {
+  border-color: var(--nbh-border);
+}
+
+.navbar-custom .navbar-toggler-icon {
+  filter: invert(1);
+}
+
+@media (max-width: 1199px) {
+  .navbar-custom .navbar-collapse {
+    background: var(--nbh-bg);
+    padding: 12px 0;
+  }
+
+  .navbar-custom .navbar-nav {
+    align-items: flex-start;
+  }
+
+  .navbar-custom .navbar-nav .nav-item:last-child .nav-link {
+    margin: 8px 0 0 12px;
+  }
+}
+
+/* ----------------------------------------------------------
+   Footer
+   ---------------------------------------------------------- */
+
+footer {
+  background: var(--nbh-bg) !important;
+  border-top: 1px solid var(--nbh-border);
+  font-family: var(--nbh-mono);
+  font-size: 0.8rem;
+  margin-top: 64px;
+  padding: 40px 0 32px;
+}
+
+footer,
+footer a,
+footer .text-muted,
+footer .copyright,
+footer .theme-by {
+  color: var(--nbh-muted) !important;
+}
+
+footer a:hover {
+  color: var(--nbh-accent) !important;
+}
+
+footer .footer-links .fa-stack .fa-circle {
+  color: var(--nbh-surface);
+}
+
+footer .footer-links .fa-stack .fa-inverse {
+  color: var(--nbh-text-2);
+}
+
+footer .footer-links a:hover .fa-inverse {
+  color: var(--nbh-accent);
+}
+
+/* Belt-and-braces: hide the theme credit even if the config flag is missing */
+footer .theme-by {
+  display: none !important;
+}
