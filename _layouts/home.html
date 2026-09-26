@@ -1,42 +1,16 @@
 ---
-layout: base
+layout: page
 ---
-{%- comment -%}
-  Nanobyte Security blog home layout.
-  Save as: _layouts/home.html in the blog repo.
 
-  Uses layout "base" (not "page") so Beautiful Jekyll's big intro header
-  is skipped. base.html still includes _includes/nav.html (the new header)
-  and the theme footer. Styles live in assets/css/nanobyte-blog.css.
-{%- endcomment -%}
+{{ content }}
 
 {% assign posts = paginator.posts | default: site.posts %}
-{% assign date_format = site.date_format | default: "%b %-d, %Y" %}
-{% assign excerpt_length = site.excerpt_length | default: 50 %}
 
-<main class="nb-blog">
-
-  <section class="nb-blog-hero">
-    <div class="nb-eyebrow">// Nanobyte Security Blog</div>
-    <h1>{{ page.title | default: "Field notes from the offensive side." }}</h1>
-    {% if page.subtitle %}
-      <p>{{ page.subtitle }}</p>
-    {% endif %}
-    <div class="nb-hero-links">
-      <a href="{{ '/feed.xml' | relative_url }}">rss feed →</a>
-      <a href="{{ '/tags' | relative_url }}">browse by tag →</a>
-    </div>
-  </section>
-
-  {% if content != "" %}
-    <section class="nb-blog-intro">
-      {{ content }}
-    </section>
-  {% endif %}
-
-  <!-- role="list" keeps list semantics in Safari when list-style is none -->
-  <ul class="nb-posts" role="list">
-    {% for post in posts %}
+<!-- role="list" needed so that list-style: none in Safari doesn't remove the list semantics -->
+<ul class="posts-list list-unstyled" role="list">
+  {% for post in posts %}
+  <li class="post-preview">
+    <article>
 
       {%- capture thumbnail -%}
         {% if post.thumbnail-img %}
@@ -47,92 +21,102 @@ layout: base
           {% else %}
             {{ post.cover-img }}
           {% endif %}
+        {% else %}
         {% endif %}
-      {%- endcapture -%}
-      {% assign thumbnail = thumbnail | strip %}
+      {% endcapture %}
+      {% assign thumbnail=thumbnail | strip %}
 
-      {% assign words = post.content | number_of_words %}
-      {% assign minutes = words | divided_by: 200 | plus: 1 %}
-
-      <li class="nb-post{% if thumbnail != "" %} has-image{% endif %}">
-        <article class="nb-post-body">
-
-          <div class="nb-post-meta">
-            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: date_format }}</time>
-            · {{ minutes }} min read
-            {% if post.author %}
-              · {{ post.author | strip_html }}
-            {% endif %}
-          </div>
-
-          <h2 class="nb-post-title">
-            <a href="{{ post.url | relative_url }}">{{ post.title | strip_html }}</a>
-          </h2>
-
-          {% if post.subtitle %}
-            <p class="nb-post-subtitle">{{ post.subtitle | strip_html }}</p>
-          {% endif %}
-
-          {% unless site.feed_show_excerpt == false %}
-            <p class="nb-post-excerpt">
-              {{ post.excerpt | strip_html | truncatewords: excerpt_length }}
-            </p>
-          {% endunless %}
-
-          <div class="nb-post-footer">
-            {% if site.feed_show_tags != false and post.tags.size > 0 %}
-              <!-- role="list" keeps list semantics in Safari when list-style is none -->
-              <ul class="nb-tags" role="list" aria-label="Tags">
-                {% for tag in post.tags %}
-                  <li><a href="{{ '/tags' | relative_url }}#{{- tag -}}">{{- tag -}}</a></li>
-                {% endfor %}
-              </ul>
-            {% endif %}
-            <a class="nb-read-more" href="{{ post.url | relative_url }}" aria-label="Read {{ post.title | strip_html }}">read post →</a>
-          </div>
-
-        </article>
-
-        {% if thumbnail != "" %}
-          <a class="nb-post-image" href="{{ post.url | relative_url }}" tabindex="-1" aria-hidden="true">
-            <img src="{{ thumbnail | relative_url }}" alt="" loading="lazy">
-          </a>
-        {% endif %}
-      </li>
-
-    {% else %}
-
-      <li class="nb-empty">
-        <div><span class="p">$</span> ls ./posts</div>
-        <div>No posts yet. First write-up coming soon.</div>
-      </li>
-
-    {% endfor %}
-  </ul>
-
-  {% if paginator.total_pages > 1 %}
-    <nav class="nb-pager" aria-label="Pagination">
-      {% if paginator.previous_page %}
-        <a href="{{ paginator.previous_page_path | relative_url }}">← newer</a>
-      {% else %}
-        <span class="nb-spacer"></span>
+      {% if site.feed_show_excerpt == false %}
+      {% if thumbnail != "" %}
+      <div class="post-image post-image-normal">
+        <a href="{{ post.url | absolute_url }}" aria-label="Thumbnail">
+          <img src="{{ thumbnail | absolute_url }}" alt="Post thumbnail">
+        </a>
+      </div>
+      {% endif %}
       {% endif %}
 
-      <span>page {{ paginator.page }} of {{ paginator.total_pages }}</span>
+      <a href="{{ post.url | absolute_url }}">
+        <h2 class="post-title">{{ post.title | strip_html }}</h2>
 
-      {% if paginator.next_page %}
-        <a href="{{ paginator.next_page_path | relative_url }}">older →</a>
-      {% else %}
-        <span class="nb-spacer"></span>
+        {% if post.subtitle %}
+          <h3 class="post-subtitle">
+          {{ post.subtitle | strip_html }}
+          </h3>
+        {% endif %}
+      </a>
+
+      {% if post.author %}
+        <span>By <strong>{{ post.author | strip_html }}</strong></span>
       {% endif %}
-    </nav>
+      <p class="post-meta">
+        {% assign date_format = site.date_format | default: "%B %-d, %Y" %}
+        Posted on {{ post.date | date: date_format }}
+      </p>
+
+      {% if thumbnail != "" %}
+      <div class="post-image post-image-small">
+        <a href="{{ post.url | absolute_url }}" aria-label="Thumbnail">
+          <img src="{{ thumbnail | absolute_url }}" alt="Post thumbnail">
+        </a>
+      </div>
+      {% endif %}
+
+      {% unless site.feed_show_excerpt == false %}
+      {% if thumbnail != "" %}
+      <div class="post-image post-image-short">
+        <a href="{{ post.url | absolute_url }}" aria-label="Thumbnail">
+          <img src="{{ thumbnail | absolute_url }}" alt="Post thumbnail">
+        </a>
+      </div>
+      {% endif %}
+
+      <div class="post-entry">
+        {% assign excerpt_length = site.excerpt_length | default: 50 %}
+        {{ post.excerpt | strip_html | truncatewords: excerpt_length }}
+        {% assign excerpt_word_count = post.excerpt | number_of_words %}
+        {% if post.content != post.excerpt or excerpt_word_count > excerpt_length %}
+          <a href="{{ post.url | absolute_url }}" class="post-read-more">[Read&nbsp;More]</a>
+        {% endif %}
+      </div>
+      {% endunless %}
+
+      {% if site.feed_show_tags != false and post.tags.size > 0 %}
+      <div class="blog-tags">
+        <span>Tags:</span>
+        <!-- role="list" needed so that list-style: none in Safari doesn't remove the list semantics -->
+        <ul class="d-inline list-inline" role="list">
+          {% for tag in post.tags %}
+          <li class="list-inline-item">
+            <a href="{{ '/tags' | absolute_url }}#{{- tag -}}">{{- tag -}}</a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+
+    </article>
+  </li>
+  {% endfor %}
+</ul>
+
+{% if paginator.total_pages > 1 %}
+<ul class="pagination main-pager">
+  {% if paginator.previous_page %}
+  <li class="page-item previous">
+    <a class="page-link" href="{{ paginator.previous_page_path | absolute_url }}">
+      <i class="fas fa-arrow-left" alt="Newer Posts"></i>
+      <span class="d-none d-sm-inline-block">Newer Posts</span>
+    </a>
+  </li>
   {% endif %}
-
-  <section class="nb-blog-cta">
-    <div class="nb-eyebrow">// Nanobyte Security</div>
-    <h2>Want to know how an attacker would get in?</h2>
-    <p>Book a free 20-minute scoping call. No sales pitch, just a straight conversation about your environment.</p>
-    <a class="nb-btn" href="https://calendly.com/alex-nanobytesecurity/30min">Book a free scoping call</a>
-  </section>
-
-</main>
+  {% if paginator.next_page %}
+  <li class="page-item next">
+    <a class="page-link" href="{{ paginator.next_page_path | absolute_url }}">
+      <span class="d-none d-sm-inline-block">Older Posts</span>
+      <i class="fas fa-arrow-right" alt="Older Posts"></i>
+    </a>
+  </li>
+  {% endif %}
+</ul>
+{% endif %}
