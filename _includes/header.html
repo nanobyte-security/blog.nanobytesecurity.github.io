@@ -1,149 +1,65 @@
-<!--
-  Nanobyte Security header (shared by nanobytesecurity.com and blog.nanobytesecurity.com)
-  Save as: _includes/nav.html in BOTH repos. Edit here to change the header everywhere.
+{% assign date_format = site.date_format | default: "%B %-d, %Y" %}
 
-  Desktop:  nanobyte_security            services  process  contact  blog  [book a call]
-  Mobile:   nanobyte_security                                              [book a call]
-            services        process        contact        blog
--->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;display=swap">
+{% if page.cover-img %}
+  <div id="header-big-imgs" data-num-img={% if page.cover-img.first %}{{ page.cover-img.size }}{% else %}1{% endif %}
+    {% for bigimg in page.cover-img %}
+    {% assign imgnum = forloop.index %}
+    {% for imginfo in bigimg %}
+    {% if imginfo[0] %}
+      data-img-src-{{ imgnum }}="{{ imginfo[0] | absolute_url }}"
+      data-img-desc-{{ imgnum }}="{{ imginfo[1] }}"
+    {% else %}
+      data-img-src-{{ imgnum }}="{{ imginfo | absolute_url }}"
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+  ></div>
+{% endif %}
 
-<style>
-  /* Beautiful Jekyll offsets the page for its fixed navbar; this header isn't fixed */
-  body {
-    padding-top: 0 !important;
-    margin-top: 0 !important;
-  }
-
-  .intro-header {
-    margin-top: 0 !important;
-  }
-
-  #nb-nav,
-  #nb-nav * {
-    box-sizing: border-box;
-  }
-
-  #nb-nav {
-    display: block;
-    position: static;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    background: #0A0D0B;
-    border-bottom: 1px solid #1F2A22;
-    line-height: 1.5;
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-  }
-
-  #nb-nav .nb-nav-inner {
-    max-width: 1120px;
-    margin: 0 auto;
-    padding: 20px 24px;
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    grid-template-areas: "brand links cta";
-    align-items: center;
-    column-gap: 28px;
-  }
-
-  #nb-nav a {
-    text-decoration: none;
-    letter-spacing: normal;
-    text-transform: none;
-    transition: color 0.15s, background 0.15s;
-  }
-
-  #nb-nav .nb-brand {
-    grid-area: brand;
-    color: #E6EDE8;
-    font-size: 1rem;
-    font-weight: 700;
-    white-space: nowrap;
-  }
-
-  #nb-nav .nb-brand:hover,
-  #nb-nav .nb-brand:focus {
-    color: #E6EDE8;
-  }
-
-  #nb-nav .nb-brand span {
-    color: #4ADE80;
-  }
-
-  #nb-nav .nb-nav-links {
-    grid-area: links;
-    justify-self: end;
-    display: flex;
-    gap: 28px;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-    font-size: 0.85rem;
-  }
-
-  /* display is set explicitly so older stylesheets can't hide these links on phones */
-  #nb-nav .nb-nav-links a {
-    display: inline-block !important;
-    color: #A7B8AC;
-    font-weight: 400;
-    padding: 4px 0;
-  }
-
-  #nb-nav .nb-nav-links a:hover,
-  #nb-nav .nb-nav-links a:focus {
-    color: #4ADE80;
-  }
-
-  #nb-nav .nb-nav-cta {
-    grid-area: cta;
-    color: #4ADE80;
-    border: 1px solid #4ADE80;
-    padding: 9px 14px;
-    border-radius: 6px;
-    font-size: 0.85rem;
-    white-space: nowrap;
-  }
-
-  #nb-nav .nb-nav-cta:hover,
-  #nb-nav .nb-nav-cta:focus {
-    background: #4ADE80;
-    color: #06140B;
-  }
-
-  /* Phones and small tablets: links move to their own row */
-  @media (max-width: 760px) {
-    #nb-nav .nb-nav-inner {
-      grid-template-columns: 1fr auto;
-      grid-template-areas:
-        "brand cta"
-        "links links";
-      padding: 16px 20px 0;
-    }
-
-    #nb-nav .nb-nav-links {
-      justify-self: stretch;
-      justify-content: space-between;
-      gap: 12px;
-      margin: 16px -20px 0;
-      padding: 12px 20px 14px;
-      border-top: 1px solid #151D18;
-    }
-  }
-</style>
-
-<header id="nb-nav" class="nb-nav">
-  <div class="nb-nav-inner">
-    <a class="nb-brand" href="https://nanobytesecurity.com/">nanobyte<span>_</span>security</a>
-    <nav class="nb-nav-links" aria-label="Main">
-      <a href="https://nanobytesecurity.com/#services">services</a>
-      <a href="https://nanobytesecurity.com/#process">process</a>
-      <a href="https://nanobytesecurity.com/contact">contact</a>
-      <a href="https://blog.nanobytesecurity.com/">blog</a>
-    </nav>
-    <a class="nb-nav-cta" href="https://calendly.com/alex-nanobytesecurity/30min">book a call</a>
+<header class="header-section {% if page.cover-img %}has-img{% endif %}">
+<div class="intro-header {% if page.cover-img %} big-img {% endif %}">
+  {% if page.cover-img or page.title %}
+  <div class="container-md">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+        <div class="{{ include.type }}-heading">
+          <h1>{% if page.title %}{{ page.title | strip_html }}{% else %}<br/>{% endif %}</h1>
+          {% if page.subtitle %}
+            {% if include.type == "page" %}
+              <hr class="small">
+              <span class="{{ include.type }}-subheading">{{ page.subtitle | strip_html }}</span>
+            {% else %}
+              <h2 class="{{ include.type }}-subheading">{{ page.subtitle | strip_html }}</h2>
+            {% endif %}
+          {% endif %}
+          
+          {% if include.type == "post" %} 
+            {% if page.author %}
+              By <strong>{{ page.author | strip_html }}</strong><br>
+            {% endif%}
+            <span class="post-meta">Posted on {{ page.date | date: date_format }}</span>
+            {% if page.last-updated %}
+              <span class="post-meta">
+                <span class="d-none d-md-inline middot">&middot;</span>
+                Last updated {{ page.last-updated | date: date_format }}
+              </span>
+            {% endif %}
+            {% if page.readtime %}
+              {% include readtime.html %}
+            {% endif %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
   </div>
-</header>
+  {% endif %}
+  {% if page.cover-img %}<span class='img-desc'></span>{% endif %}
+</div>
 
-<!-- Hidden stand-in so Beautiful Jekyll's script finds a ".navbar" and doesn't throw errors -->
-<div class="navbar" style="display: none;" aria-hidden="true"></div>
+{% if page.header-extra %}
+  {% for file in page.header-extra %}
+    {% include {{ file }} %}
+  {% endfor %}
+{% endif %}
+
+</header>
