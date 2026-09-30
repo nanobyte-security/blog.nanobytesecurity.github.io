@@ -1,42 +1,88 @@
-<footer>
-  <div class="container-md beautiful-jekyll-footer">
-    <div class="row">
-      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
-      {% include social-networks-links.html %}
-      {% if page.footer-extra %}
-        <div class="footer-custom-content">
-          {% for file in page.footer-extra %}
-            {% include {{ file }} %}
-          {% endfor %}
-        </div>
-      {% endif %}
-      <p class="copyright text-muted">
-      {% if site.author %}
-        {{ site.author }}
-        &nbsp;&bull;&nbsp;
-      {% endif %}
-      {{ site.time | date: '%Y' }}
+<!--
+  Nanobyte Security footer (shared by nanobytesecurity.com and blog.nanobytesecurity.com)
+  Save as: _includes/footer.html in BOTH repos (replaces Beautiful Jekyll's footer).
+  Edit here to change the footer everywhere.
+-->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;display=swap">
 
-      {% if site.url-pretty %}
-        &nbsp;&bull;&nbsp;
-        <span class="author-site">
-          <a href="{% if site.url-canonical %}{{ site.url-canonical }}{% else %}{{ '/' | absolute_url }}{% endif %}">{{ site.url-pretty }}</a>
-        </span>
-      {% endif %}
+<style>
+  /* ID selectors and !important keep older theme footer rules from leaking in */
+  #nb-footer {
+    display: block;
+    margin: 64px 0 0 !important;
+    padding: 40px 24px 44px !important;
+    background: #0A0D0B !important;
+    border-top: 1px solid #1F2A22 !important;
+    text-align: center;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
 
-      {% if site.matomo %}
-        {% if site.matomo.opt-out %}
-          &nbsp;&bull;&nbsp;
-          <a href="http://{{- site.matomo.uri -}}/index.php?module=CoreAdminHome&action=optOut" target="_blank" class="text_muted">Do-not-Track</a>
-        {% endif %}
-      {% endif%}
+  #nb-footer .nbf-icons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin: 0 0 18px;
+    padding: 0;
+    list-style: none;
+  }
 
-      </p>
-      {% unless site.remove-ads %}<p class="theme-by text-muted">
-        Powered by
-        <a href="https://beautifuljekyll.com">Beautiful Jekyll</a>
-      </p>{% endunless %}
-      </div>
-    </div>
-  </div>
+  #nb-footer .nbf-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #0F1411;
+    border: 1px solid #2A3A30;
+    color: #A7B8AC !important;
+    text-decoration: none;
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  #nb-footer .nbf-icon:hover,
+  #nb-footer .nbf-icon:focus {
+    color: #4ADE80 !important;
+    border-color: #4ADE80;
+  }
+
+  #nb-footer .nbf-icon svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+  }
+
+  #nb-footer .nbf-copy {
+    margin: 0;
+    color: #7F9687 !important;
+    text-align: center;
+  }
+
+  #nb-footer .nbf-copy a {
+    color: #7F9687 !important;
+    text-decoration: none;
+  }
+
+  #nb-footer .nbf-copy a:hover,
+  #nb-footer .nbf-copy a:focus {
+    color: #4ADE80 !important;
+  }
+</style>
+
+<footer id="nb-footer">
+  <ul class="nbf-icons">
+    <li>
+      <a class="nbf-icon" href="https://linkedin.com/in/alexander-dalzell" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.6 8.65 21 11.3 21 14.7V21h-4v-5.6c0-1.34-.02-3.06-1.86-3.06-1.87 0-2.15 1.46-2.15 2.96V21H9z"/></svg>
+      </a>
+    </li>
+    <li>
+      <a class="nbf-icon" href="mailto:alex@nanobytesecurity.com" aria-label="Email">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm9 7.2L4.4 7H4v.9l8 5.4 8-5.4V7h-.4z"/></svg>
+      </a>
+    </li>
+  </ul>
+  <p class="nbf-copy">© {{ site.time | date: '%Y' }} · <a href="https://nanobytesecurity.com/">NanobyteSecurity.com</a></p>
 </footer>
