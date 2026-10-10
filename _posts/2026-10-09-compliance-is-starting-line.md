@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Compliance Is the Starting Line, Not the Finish
-tags: [compliance]
+tags: [compliance, security testing]
 author: Alex Dalzell
 ---
 
